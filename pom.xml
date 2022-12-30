@@ -12,34 +12,72 @@
 	<artifactId>rbac</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>rbac</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Analytics Engine RBAC Application</description>
+
 	<properties>
 		<java.version>19</java.version>
+
+		<!-- Spring Dependencies -->
+		<spring.version>3.0.1</spring.version>
+		<spring.security.version>6.0.1</spring.security.version>
+
+		<!-- MVN Dependencies -->
+		<maven-compiler.source>3.10.1</maven-compiler.source>
+		<maven-compiler.target>3.10.1</maven-compiler.target>
+		<maven-shade-plugin.version>3.4.1</maven-shade-plugin.version>
+		<maven-resources-plugin>3.3.0</maven-resources-plugin>
+
+		<!-- Scala Dependencies -->
+		<scala.version>3.2.1</scala.version>
+		<scala.binary.version>3.2</scala.binary.version>
+		<scala-maven-plugin.version>4.8.0</scala-maven-plugin.version>
+
+		<!-- MISC Dependencies -->
+		<jgitflow.version>1.0-m5.1</jgitflow.version>
+		<git.commit.id.plugin.version>4.9.10</git.commit.id.plugin.version>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
+			<version>${spring.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
+			<version>${spring.security.version}</version>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- Scala Dependencies -->
+		<dependency>
+			<groupId>org.scala-lang</groupId>
+			<artifactId>scala3-library_3</artifactId>
+			<version>${scala.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.scala-lang</groupId>
+			<artifactId>scala3-compiler_3</artifactId>
+			<version>${scala.version}</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -48,7 +86,58 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>net.alchim31.maven</groupId>
+				<artifactId>scala-maven-plugin</artifactId>
+				<version>${scala-maven-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>compile-scala</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>add-source</goal>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>test-compile-scala</id>
+						<phase>test-compile</phase>
+						<goals>
+							<goal>add-source</goal>
+							<goal>testCompile</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<recompileMode>incremental</recompileMode>
+					<scalaVersion>${scala.version}</scalaVersion>
+					<args>
+						<arg>-deprecation</arg>
+					</args>
+					<jvmArgs>
+						<jvmArg>-Xms64m</jvmArg>
+						<jvmArg>-Xmx1024m</jvmArg>
+					</jvmArgs>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>external.atlassian.jgitflow</groupId>
+				<artifactId>jgitflow-maven-plugin</artifactId>
+				<version>${jgitflow.version}</version>
+				<configuration>
+					<noDeploy>true</noDeploy>
+					<noReleaseBuild>true</noReleaseBuild>
+					<noFeatureBuild>true</noFeatureBuild>
+					<noHotfixBuild>true</noHotfixBuild>
+					<enableFeatureVersions>true</enableFeatureVersions>
+					<releaseBranchVersionSuffix>RC</releaseBranchVersionSuffix>
+					<allowSnapshots>true</allowSnapshots>
+					<pushReleases>true</pushReleases>
+					<pushHotfixes>true</pushHotfixes>
+					<pushFeatures>true</pushFeatures>
+					<allowUntracked>true</allowUntracked>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
-
 </project>
