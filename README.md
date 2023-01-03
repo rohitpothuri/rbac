@@ -99,3 +99,4 @@ If you have run out of energy or time for your project, put a note at the top of
 
 ## Swagger UI
 Default swagger UI is at http://localhost:8080/swagger-ui/index.html
+Use https://springdoc.org/v2/ for 
