@@ -33,6 +33,6 @@ WORKDIR /usr/app
 #Copy all the project files to container
 COPY . .
 #Create jar. Remove maven installation/jar build once we have java upgraded. We can copy the jar file
-RUN mvn clean install -DskipTests=true
+RUN mvn clean install -U -DskipTests=true
 
 ENTRYPOINT ["java","-jar","./target/rbac-0.0.1-SNAPSHOT.jar"]
