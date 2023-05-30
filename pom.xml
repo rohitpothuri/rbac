@@ -15,14 +15,14 @@
 	<description>Analytics Engine RBAC Application</description>
 
 	<properties>
-		<java.version>19</java.version>
+		<java.version>20</java.version>
 
 		<!-- Spring Dependencies -->
-		<spring.version>3.0.1</spring.version>
+		<spring.version>3.1.0</spring.version>
 		<spring.security.version>6.0.1</spring.security.version>
 
 		<!-- Swagger Dependencies -->
-		<springdoc.version>2.0.2</springdoc.version>
+		<springdoc.version>2.1.0</springdoc.version>
 
 		<!-- MVN Dependencies -->
 		<maven-compiler.source>3.10.1</maven-compiler.source>
@@ -38,8 +38,10 @@
 		<!-- MISC Dependencies -->
 		<jgitflow.version>1.0-m5.1</jgitflow.version>
 		<git.commit.id.plugin.version>4.9.10</git.commit.id.plugin.version>
+		<micrometer.version>1.11.0</micrometer.version>
 	</properties>
 
+	<!-- Spring Dependencies -->
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -74,6 +76,12 @@
 			<version>${spring.security.version}</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<version>${spring.version}</version>
+			<optional>true</optional>
+		</dependency>
 
 		<!-- Swagger Dependencies -->
 		<dependency>
@@ -94,6 +102,18 @@
 			<version>${scala.version}</version>
 		</dependency>
 
+		<!-- Micrometer Prometheus registry -->
+		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-registry-prometheus</artifactId>
+			<version>${micrometer.version}</version>
+		</dependency>
+		<!-- Needed for showing counter/timer metrics -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>

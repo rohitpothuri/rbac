@@ -100,3 +100,15 @@ If you have run out of energy or time for your project, put a note at the top of
 ## Swagger UI
 Default swagger UI is at http://localhost:8080/swagger-ui/index.html
 Use https://springdoc.org/v2/ for 
+
+### Prometheus Counters
+If counters are needed for any methods, we can use the below annotations with unique values.
+These are exported to prometheus and can be searched with values (. replaced by _)
+eg:
+
+```
+@Timed(value = "service.common.testMethod.responseTime", description = "service endpoint response time")
+@Counted(value = "service.common.testMethod.Count", description = "service endpoint count")
+def testMethod = {
+    println("Just Testing")
+}

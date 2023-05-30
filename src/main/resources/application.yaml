@@ -1,0 +1,32 @@
+spring:
+  security:
+    user:
+      name: admin
+      password: password
+
+logging:
+  level:
+    root: info
+
+management:
+  endpoint:
+    metrics:
+      enabled: true
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+scrape_configs:
+  - job_name: 'aerbac-actuator'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['localhost:8080']
+
+springdoc:
+  show-actuator: true
+
