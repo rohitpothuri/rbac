@@ -12,7 +12,7 @@
 	<artifactId>rbac</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>rbac</name>
-	<description>Analytics Engine RBAC Application</description>
+	<description>RBAC Application</description>
 
 	<properties>
 
