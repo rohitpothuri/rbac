@@ -1,4 +1,4 @@
-# Com.Iqvia.Analyticsengine.Rbac
+# com.rohitpothuri.rbac
 
 
 
@@ -15,14 +15,14 @@ Already a pro? Just edit this README.md and make it your own. Want to make it ea
 
 ```
 cd existing_repo
-git remote add origin https://git.rxcorp.com/RPothuri/com.iqvia.analyticsengine.rbac.git
+git remote add origin https://github.com/rohitpothuri/rbac.git
 git branch -M main
 git push -uf origin main
 ```
 
 ## Integrate with your tools
 
-- [ ] [Set up project integrations](https://git.rxcorp.com/RPothuri/com.iqvia.analyticsengine.rbac/-/settings/integrations)
+- [ ] [Set up project integrations](https://github.com/rohitpothuri/rbac/-/settings/integrations)
 
 ## Collaborate with your team
 
@@ -52,7 +52,7 @@ When you're ready to make this README your own, just edit this file and use the 
 Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
 
 ## Name
-Analytics Engine RBAC Repo
+RBAC Repo
 
 ## Description
 This provides a microservice apis that give JSON based access control based on Roles
@@ -88,8 +88,7 @@ For people who want to make changes to your project, it's helpful to have some d
 You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
 
 ## Authors and acknowledgment
-rohit.pothuri@iqvia.com
-afroz.mohammed@iqvia.com
+rohitpothuri@gmail.com
 
 ## License
 For open source projects, say how it is licensed.

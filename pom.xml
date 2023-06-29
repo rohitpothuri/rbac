@@ -8,14 +8,13 @@
 		<version>3.0.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.iqvia.analyticsengine</groupId>
+	<groupId>com.rohitpothuri</groupId>
 	<artifactId>rbac</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>rbac</name>
 	<description>Analytics Engine RBAC Application</description>
 
 	<properties>
-		<java.version>20</java.version>
 
 		<!-- Spring Dependencies -->
 		<spring.version>3.1.0</spring.version>
@@ -146,7 +145,6 @@
 						</goals>
 						<configuration>
 							<additionalProperties>
-								<java.version>${java.version}</java.version>
 								<scala.version>${scala.version}</scala.version>
 							</additionalProperties>
 						</configuration>
