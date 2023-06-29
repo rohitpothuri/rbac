@@ -1,4 +1,4 @@
-package com.iqvia.analyticsengine.rbac.common.config
+package com.rohitpothuri.rbac.common.config
 
 import io.micrometer.core.aop.CountedAspect
 import io.micrometer.core.aop.TimedAspect

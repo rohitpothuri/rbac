@@ -1,6 +1,6 @@
-package com.iqvia.analyticsengine.rbac.healthendpoints.repo
+package com.rohitpothuri.rbac.healthendpoints.repo
 
-import com.iqvia.analyticsengine.rbac.healthendpoints.model.HealthStatus
+import com.rohitpothuri.rbac.healthendpoints.model.HealthStatus
 import org.springframework.data.jpa.repository.{JpaRepository, Query}
 import org.springframework.data.repository.query.Param
 import org.springframework.stereotype.Repository

@@ -1,4 +1,4 @@
-package com.iqvia.analyticsengine.rbac
+package com.rohitpothuri.rbac
 
 import org.slf4j.{Logger, LoggerFactory}
 import org.springframework.boot.SpringApplication

@@ -1,4 +1,4 @@
-package com.iqvia.analyticsengine.rbac.healthendpoints.model
+package com.rohitpothuri.rbac.healthendpoints.model
 
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.annotation.JsonInclude.Include

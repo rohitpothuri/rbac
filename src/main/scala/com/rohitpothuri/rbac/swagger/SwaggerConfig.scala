@@ -1,4 +1,4 @@
-package com.iqvia.analyticsengine.rbac.swagger
+package com.rohitpothuri.rbac.swagger
 
 import io.swagger.v3.oas.annotations.enums.ParameterIn
 import io.swagger.v3.oas.models.info.{Contact, Info, License}

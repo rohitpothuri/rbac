@@ -1,4 +1,4 @@
-package com.iqvia.analyticsengine.rbac;
+package com.rohitpothuri.rbac;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

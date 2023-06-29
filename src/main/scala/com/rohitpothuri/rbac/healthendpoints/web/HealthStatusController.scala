@@ -1,7 +1,7 @@
-package com.iqvia.analyticsengine.rbac.healthendpoints.web
+package com.rohitpothuri.rbac.healthendpoints.web
 
-import com.iqvia.analyticsengine.rbac.healthendpoints.model.HealthStatus
-import com.iqvia.analyticsengine.rbac.healthendpoints.service.HealthStatusService
+import com.rohitpothuri.rbac.healthendpoints.model.HealthStatus
+import com.rohitpothuri.rbac.healthendpoints.service.HealthStatusService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.{HttpStatus, ResponseEntity}
 import org.springframework.web.bind.annotation.{GetMapping, PathVariable, PostMapping, RequestBody, RequestMapping, RestController}
