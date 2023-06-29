@@ -6,9 +6,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.context.annotation.Bean
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor
 import org.springframework.web.bind.annotation.{GetMapping, RequestMapping, RestController}
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 
 @SpringBootApplication
 @RestController
+@EnableJpaRepositories()
 @RequestMapping(path = Array("/"))
 class RBACApplication {
   @GetMapping() def home = "Welcome to Analytics Engine RBAC Services"
