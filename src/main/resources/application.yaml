@@ -3,6 +3,23 @@ spring:
     user:
       name: admin
       password: password
+## default connection pool
+  datasource:
+    url: jdbc:postgresql://localhost:55001/postgres
+    username: postgres
+    password: postgrespw
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+
+    hikari:
+      connectionTimeout: 20000
+      maximumPoolSize: 5
+
+
+#
+#  # create and drop table, good for testing, production set to none or comment it
+#  spring.jpa.hibernate.ddl-auto=create-drop
 
 logging:
   level:
@@ -29,4 +46,11 @@ scrape_configs:
 
 springdoc:
   show-actuator: true
+
+
+
+
+
+
+
 

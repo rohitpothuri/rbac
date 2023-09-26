@@ -30,11 +30,10 @@ class SwaggerConfig(@Autowired buildProperties: BuildProperties,@Autowired envir
   @Bean def rbacOpenAPI: OpenAPI =
     new OpenAPI().info(
       new Info()
-        .title("AE RBAC SWAGGER UI")
+        .title("RBAC SWAGGER UI")
         .description(
           s"""
-             |Swagger documentation for all the AE RBAC Application""".stripMargin)
+             |Swagger documentation for all the RBAC Application""".stripMargin)
         .contact(new Contact().name(supportName).url(supportUrl).email(supportEmail))
         .license(new License().name("Apache 2.0").url("https://springdoc.org/v2")))
-
 }
