@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.{GetMapping, PostMapping, Request
 
 
 @RestController
-@RequestMapping("/department")
+@RequestMapping(path = Array("/department"))
 class DepartmentController(@Autowired departmentService: DepartmentService) {
 
-  @GetMapping
+  @GetMapping(path = Array("/"))
   def findAll: java.util.List[Department] = departmentService.findAll
 
   @ResponseStatus(HttpStatus.CREATED)
-  @PostMapping
+  @PostMapping(path = Array("/"))
   def create(@RequestBody  department: Department): Department =  { departmentService.save(department)}
 
 }
