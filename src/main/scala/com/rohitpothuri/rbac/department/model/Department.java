@@ -1,21 +1,41 @@
 package com.rohitpothuri.rbac.department.model;
 
-import jakarta.persistence.Entity;
-import java.time.LocalDate;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.time.Instant;
+
+import jakarta.validation.constraints.NotNull;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedDate;
+import io.swagger.v3.oas.annotations.media.Schema;
+import com.rohitpothuri.rbac.common.model.TimestampEntity;
+
 @Entity
-public class Department {
+@Table(name = "department")
+public class Department extends TimestampEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Schema(title = "Department ID", example = "1", required = true)
     private Long id;
+
+    @NotNull
+    @Schema(title = "Department Name", example = "Development Team", required = true)
     private String name;
+
+    @NotNull
+    @Schema(title = "Department Description", example = "Development Team", required = true)
+    private String description;
+    @Schema(title = "Department Rollup", example = "Development", required = true)
+    @NotNull
     private String rollup;
-    private LocalDate createdDate;
-    private LocalDate updatedDate;
+    @NotNull
+    @Schema(title = "Corporation ID", example = "1", required = true)
     private Long corporationId;
+
+    public Department() {
+    }
 
     public Long getId() {
         return id;
@@ -33,28 +53,20 @@ public class Department {
         this.name = name;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String getRollup() {
         return rollup;
     }
 
     public void setRollup(String rollup) {
         this.rollup = rollup;
-    }
-
-    public LocalDate getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(LocalDate createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public LocalDate getUpdatedDate() {
-        return updatedDate;
-    }
-
-    public void setUpdatedDate(LocalDate updatedDate) {
-        this.updatedDate = updatedDate;
     }
 
     public Long getCorporationId() {
@@ -65,12 +77,11 @@ public class Department {
         this.corporationId = corporationId;
     }
 
-    public Department(Long id, String name, String rollup, LocalDate createdDate, LocalDate updatedDate, Long corporationId) {
+    public Department(Long id, String name, String description, String rollup, Instant createdDate, Instant updatedDate, Long corporationId) {
         this.id = id;
         this.name = name;
+        this.description = description;
         this.rollup = rollup;
-        this.createdDate = createdDate;
-        this.updatedDate = updatedDate;
         this.corporationId = corporationId;
     }
 }

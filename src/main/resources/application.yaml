@@ -5,11 +5,12 @@ spring:
       password: password
 ## default connection pool
   datasource:
-    url: jdbc:postgresql://localhost:55001/postgres
+    url: jdbc:postgresql://localhost:55004/postgres
     username: postgres
     password: postgrespw
   jpa:
     hibernate:
+      # this can be used for testing
       ddl-auto: create-drop
 
     hikari:

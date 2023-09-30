@@ -10,6 +10,8 @@ class DepartmentService(@Autowired departmentRepository: DepartmentRepository) {
 
   def findAll: java.util.List[Department] = departmentRepository.findAll()
 
+  def findAllById(departmentIds: java.util.List[Long]): java.util.List[Department] = departmentRepository.findAllById(departmentIds)
+  
   def save(department: Department): Department = departmentRepository.save(department)
 
 }
