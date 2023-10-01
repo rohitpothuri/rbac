@@ -210,6 +210,31 @@
 					<allowUntracked>true</allowUntracked>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>4.0.0-M9</version>
+				<configuration>
+					<reportPlugins>
+						<plugin>
+							<artifactId>maven-project-info-reports-plugin</artifactId>
+							<version>3.4.5</version>
+						</plugin>
+						<plugin>
+							<groupId>net.alchim31.maven</groupId>
+							<artifactId>scala-maven-plugin</artifactId>
+							<version>4.8.1</version>
+							<configuration>
+								<jvmArgs>
+									<jvmArg>-Xms64m</jvmArg>
+									<jvmArg>-Xmx1024m</jvmArg>
+								</jvmArgs>
+							</configuration>
+						</plugin>
+						...
+					</reportPlugins>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 </project>

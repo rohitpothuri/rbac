@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.time.Instant;
 
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -20,17 +21,20 @@ public class Department extends TimestampEntity {
     @Schema(title = "Department ID", example = "1", required = true)
     private Long id;
 
-    @NotNull
+    @NotNull(message = "Department name cannot be null")
+    @NotEmpty(message = "Department name cannot be empty")
     @Schema(title = "Department Name", example = "Development Team", required = true)
     private String name;
 
-    @NotNull
+    @NotNull(message = "Department description cannot be null")
+    @NotEmpty(message = "Department description cannot be empty")
     @Schema(title = "Department Description", example = "Development Team", required = true)
     private String description;
     @Schema(title = "Department Rollup", example = "Development", required = true)
-    @NotNull
+    @NotNull(message = "Department rollup cannot be null")
+    @NotEmpty(message = "Department rollup cannot be empty")
     private String rollup;
-    @NotNull
+    @NotNull(message = "Corporation Id cannot be null")
     @Schema(title = "Corporation ID", example = "1", required = true)
     private Long corporationId;
 
