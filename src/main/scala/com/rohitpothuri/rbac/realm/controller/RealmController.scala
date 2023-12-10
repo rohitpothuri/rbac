@@ -5,6 +5,7 @@ import com.rohitpothuri.rbac.realm.model.Realm
 import com.rohitpothuri.rbac.realm.service.RealmService
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.responses.{ApiResponse, ApiResponses}
+import io.swagger.v3.oas.annotations.tags.Tag
 import jakarta.validation.Valid
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.{Page, Pageable}
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*
 import java.util.Optional
 @RestController
 @RequestMapping(path = Array("/realms"))
+@Tag(name = "Realms", description = "Endpoints for managing realms")
 class RealmController(@Autowired realmService: RealmService) {
   @Operation(summary = "Get all realms", description = "Returns list of realms")
   @ApiResponses(value = Array(

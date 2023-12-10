@@ -52,9 +52,6 @@ scrape_configs:
 
 springdoc:
   show-actuator: false
-  swagger-ui:
-    syntaxHighlight:
-      theme: tomorrow-night
 
 
 

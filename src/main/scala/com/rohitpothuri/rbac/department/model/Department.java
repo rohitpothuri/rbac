@@ -1,12 +1,14 @@
 package com.rohitpothuri.rbac.department.model;
 
 import com.rohitpothuri.rbac.common.model.Neo4jTimestampEntity;
+import com.rohitpothuri.rbac.corporation.model.Corporation;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 import com.rohitpothuri.rbac.common.model.JPATimestampEntity;
 import org.springframework.data.neo4j.core.schema.Node;
+import org.springframework.data.neo4j.core.schema.Relationship;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 
@@ -36,8 +38,4 @@ public class Department extends Neo4jTimestampEntity {
     @NotNull(message = "Department rollup cannot be null")
     @NotEmpty(message = "Department rollup cannot be empty")
     private String rollup;
-
-    @NotNull(message = "Corporation Id cannot be null")
-    @Schema(title = "Corporation ID", example = "1", required = true)
-    private Long corporationId;
 }

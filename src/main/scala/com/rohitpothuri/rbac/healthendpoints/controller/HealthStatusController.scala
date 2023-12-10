@@ -1,10 +1,11 @@
-package com.rohitpothuri.rbac.healthendpoints.web
+package com.rohitpothuri.rbac.healthendpoints.controller
 
 import com.rohitpothuri.rbac.common.model.ServiceException
 import com.rohitpothuri.rbac.healthendpoints.model.HealthStatus
 import com.rohitpothuri.rbac.healthendpoints.service.HealthStatusService
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.responses.{ApiResponse, ApiResponses}
+import io.swagger.v3.oas.annotations.tags.Tag
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.{Page, Pageable}
 import org.springframework.http.{HttpStatus, ResponseEntity}
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.{DeleteMapping, GetMapping, PathV
 
 @RestController
 @RequestMapping(path = Array("/health-status"))
+@Tag(name = "Health Status", description = "Endpoints for managing health statuses")
 class HealthStatusController(@Autowired healthStatusService: HealthStatusService) {
 
   @Operation(summary = "Get all HealthStatuses", description = "Returns list of HealthStatuses")

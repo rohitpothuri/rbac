@@ -12,10 +12,6 @@ import jakarta.persistence.Id;
 @JsonInclude(Include.NON_EMPTY)
 @Entity
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Setter
-@Getter
 public class HealthStatus extends JPATimestampEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

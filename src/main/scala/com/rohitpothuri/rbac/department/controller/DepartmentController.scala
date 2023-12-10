@@ -5,6 +5,7 @@ import com.rohitpothuri.rbac.department.model.Department
 import com.rohitpothuri.rbac.department.service.DepartmentService
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.responses.{ApiResponse, ApiResponses}
+import io.swagger.v3.oas.annotations.tags.Tag
 import jakarta.validation.{ConstraintViolation, ConstraintViolationException, Valid, ValidationException}
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.dao.DataIntegrityViolationException
@@ -18,6 +19,7 @@ import scala.jdk.CollectionConverters.*
 
 @RestController
 @RequestMapping(path = Array("/departments"))
+@Tag(name = "Departments", description = "Endpoints for managing departments")
 class DepartmentController(@Autowired departmentService: DepartmentService) {
   @Operation(summary = "Get all departments", description = "Returns list of departments")
   @ApiResponses(value = Array(

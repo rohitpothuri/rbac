@@ -30,15 +30,18 @@
 		<maven-resources-plugin>3.3.0</maven-resources-plugin>
 
 		<!-- Scala Dependencies -->
-		<scala.version>3.2.1</scala.version>
-		<scala.binary.version>3.2</scala.binary.version>
+		<scala.version>3.3.1</scala.version>
+		<scala.binary.version>3.3</scala.binary.version>
 		<scala-maven-plugin.version>4.8.0</scala-maven-plugin.version>
 
 		<!-- MISC Dependencies -->
 		<jgitflow.version>1.0-m5.1</jgitflow.version>
 		<git.commit.id.plugin.version>4.9.10</git.commit.id.plugin.version>
-		<micrometer.version>1.11.0</micrometer.version>
+		<micrometer.version>1.12.0</micrometer.version>
 		<lombok.version>1.18.30</lombok.version>
+
+		<!-- DB Dependencies -->
+		<h2.version>2.2.224</h2.version>
 	</properties>
 
 	<!-- Spring Dependencies -->
@@ -124,6 +127,7 @@
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
+			<version>${h2.version}</version>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
