@@ -38,6 +38,7 @@
 		<jgitflow.version>1.0-m5.1</jgitflow.version>
 		<git.commit.id.plugin.version>4.9.10</git.commit.id.plugin.version>
 		<micrometer.version>1.11.0</micrometer.version>
+		<lombok.version>1.18.30</lombok.version>
 	</properties>
 
 	<!-- Spring Dependencies -->
@@ -114,22 +115,29 @@
 			<artifactId>spring-boot-starter-aop</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-
 		<!-- Spring Data JPA -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-
-		<!-- PostgreSQL database -->
 		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-neo4j</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+			<scope>provided</scope>
+		</dependency>
 
 	</dependencies>
 
@@ -215,24 +223,6 @@
 				<artifactId>maven-site-plugin</artifactId>
 				<version>4.0.0-M9</version>
 				<configuration>
-					<reportPlugins>
-						<plugin>
-							<artifactId>maven-project-info-reports-plugin</artifactId>
-							<version>3.4.5</version>
-						</plugin>
-						<plugin>
-							<groupId>net.alchim31.maven</groupId>
-							<artifactId>scala-maven-plugin</artifactId>
-							<version>4.8.1</version>
-							<configuration>
-								<jvmArgs>
-									<jvmArg>-Xms64m</jvmArg>
-									<jvmArg>-Xmx1024m</jvmArg>
-								</jvmArgs>
-							</configuration>
-						</plugin>
-						...
-					</reportPlugins>
 				</configuration>
 			</plugin>
 		</plugins>

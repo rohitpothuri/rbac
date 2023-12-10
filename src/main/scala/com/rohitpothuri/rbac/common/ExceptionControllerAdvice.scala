@@ -1,6 +1,5 @@
 package com.rohitpothuri.rbac.common
 
-import com.rohitpothuri.rbac.department.model.Department
 import jakarta.servlet.http.HttpServletRequest
 import org.springframework.web.bind.annotation.*
 import org.springframework.http.{HttpStatus, ResponseEntity}

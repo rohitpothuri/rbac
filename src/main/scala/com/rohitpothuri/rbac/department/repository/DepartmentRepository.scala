@@ -2,11 +2,10 @@ package com.rohitpothuri.rbac.department.repository
 
 import com.rohitpothuri.rbac.department.model.Department
 import org.springframework.data.domain.Pageable
-import org.springframework.data.jpa.repository.JpaRepository
+import org.springframework.data.neo4j.repository.Neo4jRepository
 import org.springframework.data.repository.PagingAndSortingRepository
 
-trait DepartmentRepository extends JpaRepository[Department, Long] {
-
-  def findAllByName(departmentName: String, pageable: Pageable): java.util.List[Department]
+trait DepartmentRepository extends Neo4jRepository[Department, java.lang.Long] {
+  def findAllByName(departmentName: String, page: Pageable): java.util.List[Department]
 
 }
