@@ -3,7 +3,6 @@ package com.rohitpothuri.rbac.corporation.model;
 import com.rohitpothuri.rbac.department.model.Department;
 import lombok.Data;
 import org.springframework.data.neo4j.core.schema.*;
-import com.rohitpothuri.rbac.realm.model.Realm;
 
 import java.util.List;
 
