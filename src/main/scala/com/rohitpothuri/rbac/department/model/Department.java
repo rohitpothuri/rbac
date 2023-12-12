@@ -9,7 +9,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import com.rohitpothuri.rbac.common.model.JPATimestampEntity;
 import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Relationship;
-import org.springframework.data.neo4j.core.schema.GeneratedValue;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import org.springframework.data.neo4j.core.schema.Id;
 
 import java.util.List;
@@ -23,8 +24,8 @@ import java.util.List;
 public class Department extends Neo4jTimestampEntity {
 
     @Id
-    @GeneratedValue()
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
 
     @NotNull(message = "Department name cannot be null")
     @NotEmpty(message = "Department name cannot be empty")

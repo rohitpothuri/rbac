@@ -1,7 +1,8 @@
 package com.rohitpothuri.rbac.realm.model;
 
 import lombok.*;
-import org.springframework.data.neo4j.core.schema.GeneratedValue;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Relationship;
 import org.springframework.data.neo4j.core.schema.Node;
@@ -13,8 +14,8 @@ import java.util.List;
 @Node("Realm")
 public class Realm extends Neo4jTimestampEntity {
     @Id
-    @GeneratedValue
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
 
     private String name;
 

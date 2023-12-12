@@ -16,7 +16,7 @@ import java.util.Optional
 class CorporationService(@Autowired corporationRepository: CorporationRepository) {
   def getAllCorporations(pageable: Pageable): Page[Corporation] = corporationRepository.findAll(pageable)
 
-  def getCorporationById(id: Long): Optional[Corporation] = corporationRepository.findById(id)
+  def getCorporationById(id: String): Optional[Corporation] = corporationRepository.findById(id)
 
   def saveCorporation(corporation: Corporation): Corporation = corporationRepository.save(corporation)
 
@@ -24,7 +24,7 @@ class CorporationService(@Autowired corporationRepository: CorporationRepository
     corporationRepository.saveAll(corporations)
   }
 
-  def deleteCorporation(id: Long): Unit = {
+  def deleteCorporation(id: String): Unit = {
     corporationRepository.deleteById(id)
   }
 

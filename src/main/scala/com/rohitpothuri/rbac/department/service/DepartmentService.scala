@@ -17,7 +17,7 @@ class DepartmentService(@Autowired departmentRepository: DepartmentRepository) {
   def findAll(pageable: Pageable): Page[Department] = departmentRepository.findAll(pageable)
 
   def findAllByName(departmentName: String, pageable: Pageable): java.util.List[Department] = departmentRepository.findAllByName(departmentName, pageable)
-  def findById(id: Long): Optional[Department] = departmentRepository.findById(id)
+  def findById(id: String): Optional[Department] = departmentRepository.findById(id)
 
   def saveAll(departments: java.util.List[Department]): java.util.List[Department] = {
     departmentRepository.saveAll(departments)
@@ -27,8 +27,8 @@ class DepartmentService(@Autowired departmentRepository: DepartmentRepository) {
     departmentRepository.save(department)
   }
   @Transactional
-  def deleteById(departmentId:Long): Unit = {
-    departmentRepository.deleteById(departmentId)
+  def deleteById(id: String): Unit = {
+    departmentRepository.deleteById(id)
   }
   @Transactional
   @throws[ServiceException]

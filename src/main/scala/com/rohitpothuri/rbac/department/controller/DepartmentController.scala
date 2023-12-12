@@ -35,7 +35,7 @@ class DepartmentController(@Autowired departmentService: DepartmentService) {
     new ApiResponse(responseCode = "200", description = "Successfully retrieved department"),
     new ApiResponse(responseCode = "404", description = "Department not found")))
   @GetMapping(path = Array("/{id}"))
-  def getDepartmentById(@PathVariable("id") id: Long): ResponseEntity[Department] = {
+  def getDepartmentById(@PathVariable("id") id: String): ResponseEntity[Department] = {
     val departmentOptional: Optional[Department] = departmentService.findById(id)
 
     if (departmentOptional.isPresent) {
@@ -65,7 +65,7 @@ class DepartmentController(@Autowired departmentService: DepartmentService) {
     new ApiResponse(responseCode = "404", description = "Department not found"),
     new ApiResponse(responseCode = "400", description = "Invalid Department ID")
   ))
-  def deleteDepartment(@PathVariable("id") id: Long): ResponseEntity[String] = {
+  def deleteDepartment(@PathVariable("id") id: String): ResponseEntity[String] = {
     departmentService.deleteById(id)
     ResponseEntity.ok(s"Department $id deleted successfully")
   }

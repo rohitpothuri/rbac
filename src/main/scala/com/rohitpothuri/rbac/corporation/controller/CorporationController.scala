@@ -38,7 +38,7 @@ class CorporationController(@Autowired val corporationService: CorporationServic
       schema = new Schema(implementation = classOf[Corporation])))),
   new ApiResponse(responseCode = "404", description = "Corporation not found")
   ))
-  def getCorporationById(@PathVariable("id") id: Long): ResponseEntity[Corporation] = {
+  def getCorporationById(@PathVariable("id") id: String): ResponseEntity[Corporation] = {
     val corporation: Optional[Corporation] = corporationService.getCorporationById(id)
     if (corporation.isPresent) {
       ResponseEntity.ok(corporation.get())
@@ -53,7 +53,7 @@ class CorporationController(@Autowired val corporationService: CorporationServic
     new ApiResponse(responseCode = "200", description = "Corporation deleted successfully"),
     new ApiResponse(responseCode = "404", description = "Corporation not found"),
     new ApiResponse(responseCode = "500", description = "Error deleting corporation")))
-  def deleteCorporation(@PathVariable("id") id: Long): ResponseEntity[String] = {
+  def deleteCorporation(@PathVariable("id") id: String): ResponseEntity[String] = {
     corporationService.deleteCorporation(id)
     ResponseEntity.ok(s"Corporation $id deleted successfully")
   }

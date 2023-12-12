@@ -16,9 +16,9 @@ class RealmService(@Autowired realmRepository: RealmRepository) {
   def saveAll(realms: java.util.List[Realm]): java.util.List[Realm] = {
     realmRepository.saveAll(realms)
   }
-  def findById(id: Long): Optional[Realm] = realmRepository.findById(id)
+  def findById(id: String): Optional[Realm] = realmRepository.findById(id)
 
-  def deleteById(id: Long): Unit = {
+  def deleteById(id: String): Unit = {
     if (realmRepository.existsById(id)) {
       realmRepository.deleteById(id)
     } else {

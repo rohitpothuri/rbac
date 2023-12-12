@@ -31,7 +31,7 @@ class RealmController(@Autowired realmService: RealmService) {
     new ApiResponse(responseCode = "200", description = "Successfully retrieved realm"),
     new ApiResponse(responseCode = "404", description = "Realm not found")))
   @GetMapping(path = Array("/{id}"))
-  def getRealmById(@PathVariable("id") id: Long): ResponseEntity[Realm] = {
+  def getRealmById(@PathVariable("id") id: String): ResponseEntity[Realm] = {
     val realmOptional: Optional[Realm] = realmService.findById(id)
     if (realmOptional.isPresent) {
       ResponseEntity.ok(realmOptional.get())
@@ -70,7 +70,7 @@ class RealmController(@Autowired realmService: RealmService) {
     new ApiResponse(responseCode = "404", description = "Realm not found"),
     new ApiResponse(responseCode = "500", description = "Error deleting realm")))
   @DeleteMapping(path = Array("/{id}"))
-  def deleteRealm(@PathVariable("id") id: Long): ResponseEntity[String] = {
+  def deleteRealm(@PathVariable("id") id: String): ResponseEntity[String] = {
     try {
       realmService.deleteById(id)
       ResponseEntity.ok(s"Realm $id deleted successfully")

@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository
 import java.lang.Long
 
 @Repository
-trait RealmRepository extends Neo4jRepository[Realm, Long] {
+trait RealmRepository extends Neo4jRepository[Realm, String] {
   def findByName(name: Long): Realm
 }
