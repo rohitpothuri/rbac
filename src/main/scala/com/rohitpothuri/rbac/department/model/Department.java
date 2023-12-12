@@ -2,7 +2,6 @@ package com.rohitpothuri.rbac.department.model;
 
 import com.rohitpothuri.rbac.common.model.Neo4jTimestampEntity;
 import com.rohitpothuri.rbac.corporation.model.Corporation;
-import com.rohitpothuri.rbac.user.model.User;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -42,6 +41,6 @@ public class Department extends Neo4jTimestampEntity {
     @NotEmpty(message = "Department rollup cannot be empty")
     private String rollup;
 
-    @Relationship(type = "BELONGS_TO", direction = Relationship.Direction.INCOMING)
-    private List<User> users;
+    /*@Relationship(type = "BELONGS_TO", direction = Relationship.Direction.INCOMING)
+    private List<User> users;*/
 }

@@ -40,21 +40,11 @@ class RealmController(@Autowired realmService: RealmService) {
     }
   }
 
-  @Operation(summary = "Save realms", description = "Returns saved realms")
-  @ApiResponses(value = Array(
-    new ApiResponse(responseCode = "200", description = "Successfully saved realms"),
-    new ApiResponse(responseCode = "404", description = "realms not found"),
-    new ApiResponse(responseCode = "500", description = "Unable to save realms")))
-  @PostMapping(path = Array("/"))
-  def createRealm(@Valid @RequestBody realm: Realm): ResponseEntity[Realm] = {
-    ResponseEntity.ok(realmService.save(realm))
-  }
-
   @Operation(summary = "Save List of Realms", description = "Save a list of realms.")
   @ApiResponses(value = Array(
     new ApiResponse(responseCode = "200", description = "Successfully saved realms"),
     new ApiResponse(responseCode = "500", description = "Error saving realms")))
-  @PostMapping(path = Array("/save-list"), consumes = Array("application/json"))
+  @PostMapping(consumes = Array("application/json"))
   def saveRealms(@RequestBody realms: java.util.List[Realm]): ResponseEntity[java.util.List[Realm]] = {
     new ResponseEntity[java.util.List[Realm]](realmService.saveAll(realms), HttpStatus.OK)
   }
@@ -62,7 +52,7 @@ class RealmController(@Autowired realmService: RealmService) {
   @ApiResponses(value = Array(
     new ApiResponse(responseCode = "200", description = "Successfully deleted all realms"),
     new ApiResponse(responseCode = "404", description = "The realm was not found")))
-  @DeleteMapping("/deleteAll")
+  @DeleteMapping
   def deleteAllRealms(): ResponseEntity[String] = {
     try {
       realmService.deleteAll()

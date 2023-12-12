@@ -38,22 +38,13 @@ class HealthStatusController(@Autowired healthStatusService: HealthStatusService
     }
   }
 
-  @Operation(summary = "Save List of Health Statuses", description = "Save a list of health statuses.")
+  @Operation(summary = "Save Health Statuses", description = "Save a list of health statuses.")
   @ApiResponses(value = Array(
     new ApiResponse(responseCode = "200", description = "Successfully saved health statuses"),
     new ApiResponse(responseCode = "500", description = "Error saving health statuses")))
-  @PostMapping(path = Array("/save-list"),  consumes = Array("application/json"))
+  @PostMapping(consumes = Array("application/json"))
   def saveHealthStatuses(@RequestBody healthStatuses: java.util.List[HealthStatus]): ResponseEntity[java.util.List[HealthStatus]] = {
     new ResponseEntity[java.util.List[HealthStatus]](healthStatusService.saveAll(healthStatuses), HttpStatus.OK)
-  }
-
-  @Operation(summary = "Save Health Status", description = "Save a single health status.")
-  @ApiResponses(value = Array(
-    new ApiResponse(responseCode = "200", description = "Successfully saved health status"),
-    new ApiResponse(responseCode = "500", description = "Error saving health status")))
-  @PostMapping(path = Array("/save"), consumes = Array("application/json"))
-  def saveHealthStatus(@RequestBody healthStatus: HealthStatus): ResponseEntity[HealthStatus] = {
-    new ResponseEntity[HealthStatus](healthStatusService.save(healthStatus), HttpStatus.OK)
   }
 
   @Operation(summary = "Delete Health Status by ID", description = "Deletes a health status based on its ID.")
@@ -77,7 +68,7 @@ class HealthStatusController(@Autowired healthStatusService: HealthStatusService
   @ApiResponses(value = Array(
     new ApiResponse(responseCode = "200", description = "All health statuses deleted successfully"),
     new ApiResponse(responseCode = "500", description = "Error deleting health statuses")))
-  @DeleteMapping(path = Array("/deleteAll"))
+  @DeleteMapping
   def deleteAllHealthStatuses(): ResponseEntity[String] = {
     try {
       healthStatusService.deleteAll()

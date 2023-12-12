@@ -47,18 +47,6 @@ class CorporationController(@Autowired val corporationService: CorporationServic
     }
   }
 
-  @PostMapping
-  @Operation(summary = "Save Corporation", description = "Save a new corporation.")
-  @ApiResponses(value = Array(
-    new ApiResponse(responseCode = "200", description = "Successfully saved corporation",
-    content = Array(new Content(mediaType = "application/json",
-      schema = new Schema(implementation = classOf[Corporation])))),
-  new ApiResponse(responseCode = "500", description = "Error saving corporation")))
-  def saveCorporation(@RequestBody corporation: Corporation): ResponseEntity[Corporation] = {
-    val savedCorporation: Corporation = corporationService.saveCorporation(corporation)
-    ResponseEntity.ok(savedCorporation)
-  }
-
   @DeleteMapping(path=Array("/{id}"))
   @Operation(summary = "Delete Corporation by ID", description = "Delete a corporation by its ID.")
   @ApiResponses(value = Array(
@@ -70,7 +58,7 @@ class CorporationController(@Autowired val corporationService: CorporationServic
     ResponseEntity.ok(s"Corporation $id deleted successfully")
   }
 
-  @DeleteMapping(path = Array("/deleteAll"))
+  @DeleteMapping
   @Operation(summary = "Delete All Corporations", description = "Delete all corporations.")
   @ApiResponses(value = Array(
   new ApiResponse(responseCode = "200", description = "All corporations deleted successfully"),
@@ -86,15 +74,15 @@ class CorporationController(@Autowired val corporationService: CorporationServic
     }
   }
 
-  @PostMapping(path = Array("/saveAll"))
-  @Operation(summary = "Save Multiple Corporations", description = "Save a list of corporations.")
+  @PostMapping
+  @Operation(summary = "Save Corporations", description = "Save a list of corporations.")
   @ApiResponses(value = Array(
   new ApiResponse(responseCode = "200", description = "Successfully saved corporations",
     content = Array(new Content(mediaType = "application/json",
       schema = new Schema(implementation = classOf[java.util.List[Corporation]])))),
   new ApiResponse(responseCode = "500", description = "Error saving corporations")
   ))
-  def saveAllCorporations(@RequestBody corporations: java.util.List[Corporation]): ResponseEntity[java.util.List[Corporation]] = {
+  def saveCorporations(@RequestBody corporations: java.util.List[Corporation]): ResponseEntity[java.util.List[Corporation]] = {
     new ResponseEntity[java.util.List[Corporation]](corporationService.saveAll(corporations), HttpStatus.OK)
   }
 }

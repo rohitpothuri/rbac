@@ -48,21 +48,12 @@ class DepartmentController(@Autowired departmentService: DepartmentService) {
   private def formatViolation(violation: ConstraintViolation[_]): String = {
     s"${violation.getPropertyPath}: ${violation.getMessage}"
   }
-  @Operation(summary = "Save department", description = "Returns saved department")
-  @ApiResponses(value = Array(
-    new ApiResponse(responseCode = "200", description = "Successfully saved department"),
-    new ApiResponse(responseCode = "404", description = "Invalid department data"),
-    new ApiResponse(responseCode = "500", description = "Unable to save department")))
-  @PostMapping(path = Array("/"))
-  def createDepartment(@Valid @RequestBody department: Department): ResponseEntity[Department] = {
-    ResponseEntity.ok(departmentService.save(department))
-  }
 
   @Operation(summary = "Save List of Departments", description = "Save a list of departments.")
   @ApiResponses(value = Array(
     new ApiResponse(responseCode = "200", description = "Successfully saved departments"),
     new ApiResponse(responseCode = "500", description = "Error saving departments")))
-  @PostMapping(path = Array("/save-list"), consumes = Array("application/json"))
+  @PostMapping(consumes = Array("application/json"))
   def saveDepartments(@RequestBody departments: java.util.List[Department]): ResponseEntity[java.util.List[Department]] = {
     new ResponseEntity[java.util.List[Department]](departmentService.saveAll(departments), HttpStatus.OK)
   }
@@ -83,7 +74,7 @@ class DepartmentController(@Autowired departmentService: DepartmentService) {
   @ApiResponses(value = Array(
     new ApiResponse(responseCode = "200", description = "Successfully deleted all departments"),
     new ApiResponse(responseCode = "500", description = "Error deleting departments")))
-  @DeleteMapping("/deleteAll")
+  @DeleteMapping
   def deleteAllDepartments(): ResponseEntity[String] = {
     try {
       departmentService.deleteAll()
