@@ -79,6 +79,13 @@
 			<version>${spring.version}</version>
 			<optional>true</optional>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-aop Added for logging-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
 
 		<!-- Swagger Dependencies -->
 		<dependency>

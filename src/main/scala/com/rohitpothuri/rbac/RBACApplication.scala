@@ -3,7 +3,7 @@ package com.rohitpothuri.rbac
 import org.slf4j.{Logger, LoggerFactory}
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.{Bean, EnableAspectJAutoProxy}
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor
@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.{GetMapping, RequestMapping, Rest
 @EnableNeo4jRepositories
 @RestController
 @EnableJpaRepositories
+@EnableAspectJAutoProxy(proxyTargetClass = true)
 @RequestMapping(path = Array("/"))
 class RBACApplication {
   @GetMapping() def home = "Welcome to Analytics Engine RBAC Services"
