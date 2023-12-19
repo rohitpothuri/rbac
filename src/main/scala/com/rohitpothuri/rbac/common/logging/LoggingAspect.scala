@@ -24,7 +24,7 @@ class LoggingAspect {
   def logAfterReturning(joinPoint: JoinPoint, result: AnyRef): Unit = {
   /*logger = LoggerFactory.getLogger(joinPoint.getTarget.getClass)*/
     logger.info("After method execution: " + joinPoint.getSignature)
-    logger.info("Returned value: " + result)
+    logger.debug("Returned value: " + result)
   }
 
   @AfterThrowing(pointcut = "execution(* com.rohitpothuri.rbac..*(..))", throwing = "exception") def logAfterThrowing(joinPoint: JoinPoint, exception: Throwable): Unit = {

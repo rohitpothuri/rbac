@@ -1,5 +1,6 @@
 package com.rohitpothuri.rbac.swagger
 
+import io.swagger.v3.oas.annotations.OpenAPIDefinition
 import io.swagger.v3.oas.annotations.enums.ParameterIn
 import io.swagger.v3.oas.models.info.{Contact, Info, License}
 import io.swagger.v3.oas.models.media.StringSchema

@@ -1,8 +1,9 @@
 package com.rohitpothuri.rbac
 
 import org.slf4j.{Logger, LoggerFactory}
-import org.springframework.boot.SpringApplication
+import org.springframework.boot.{Banner, SpringApplication}
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.cache.annotation.EnableCaching
 import org.springframework.context.annotation.{Bean, EnableAspectJAutoProxy}
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.{GetMapping, RequestMapping, Rest
 @RestController
 @EnableJpaRepositories
 @EnableAspectJAutoProxy(proxyTargetClass = true)
+@EnableCaching
 @RequestMapping(path = Array("/"))
 class RBACApplication {
   @GetMapping() def home = "Welcome to Analytics Engine RBAC Services"
@@ -34,6 +36,8 @@ class RBACApplication {
 
 object RBACApplication {
   def main(args: Array[String]): Unit = {
-    SpringApplication.run(classOf[RBACApplication])
+    val application = new SpringApplication(classOf[RBACApplication])
+    application.setBannerMode(Banner.Mode.OFF)
+    application.run()
   }
 }

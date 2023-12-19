@@ -1,3 +1,6 @@
+server:
+  port: 8081
+
 spring:
   security:
     user:
@@ -23,6 +26,8 @@ spring:
     hikari:
       connectionTimeout: 20000
       maximumPoolSize: 5
+  main:
+    lazy-initialization: true
 #
 #  # create and drop table, good for testing, production set to none or comment it
 #  spring.jpa.hibernate.ddl-auto=create-drop
@@ -51,13 +56,7 @@ scrape_configs:
       - targets: ['localhost:8080']
 
 springdoc:
-  show-actuator: false
-
-
-
-
-
-
-
-
+  show-actuator: true
+  swagger-ui:
+    doc-expansion: "none"
 
