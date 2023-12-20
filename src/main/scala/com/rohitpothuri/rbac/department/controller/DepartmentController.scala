@@ -12,6 +12,7 @@ import org.springframework.dao.DataIntegrityViolationException
 import org.springframework.data.domain.{Page, Pageable}
 import org.springframework.http.{HttpStatus, HttpStatusCode, ResponseEntity}
 import org.springframework.web.bind.annotation.*
+import com.rohitpothuri.rbac.realm.service.IncludeRealmInterceptor
 
 import java.util.Optional
 import scala.jdk.CollectionConverters.*
@@ -19,6 +20,7 @@ import scala.jdk.CollectionConverters.*
 
 @RestController
 @RequestMapping(path = Array("/departments"))
+@IncludeRealmInterceptor
 @Tag(name = "Departments", description = "Endpoints for managing departments")
 class DepartmentController(@Autowired departmentService: DepartmentService) {
   @Operation(summary = "Get all departments", description = "Returns list of departments")

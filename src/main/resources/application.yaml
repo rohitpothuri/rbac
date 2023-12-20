@@ -14,7 +14,7 @@ spring:
       password: lucky9314
     ## default connection pool
   datasource:
-    url: jdbc:h2:file:/Users/rohitpothuri/IdeaProjects/rbac/src/main/resources/h2
+    url: jdbc:h2:file:/Users/RPothuri/Library/CloudStorage/OneDrive-IQVIA/IdeaProjects/com.rohitpothuri.rbac/src/main/resources/h2
     driverClassName: org.h2.Driver
     username: sa
     password: password

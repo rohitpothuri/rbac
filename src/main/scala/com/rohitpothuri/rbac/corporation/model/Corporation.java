@@ -1,16 +1,21 @@
 package com.rohitpothuri.rbac.corporation.model;
 
 import com.rohitpothuri.rbac.department.model.Department;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.neo4j.core.schema.*;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import org.springframework.data.neo4j.core.support.UUIDStringGenerator;
+
 import java.util.List;
 
 @Data
 @Node
+@AllArgsConstructor
+@NoArgsConstructor
 public class Corporation {
-    @Id @GeneratedValue(strategy = GenerationType.UUID)
+    @Id
+    @GeneratedValue(UUIDStringGenerator.class)
     private String id;
 
     private String name;
