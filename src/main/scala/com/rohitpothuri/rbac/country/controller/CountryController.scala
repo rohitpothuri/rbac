@@ -1,6 +1,5 @@
 package com.rohitpothuri.rbac.country.controller
 
-import com.rohitpothuri.rbac.country.model.Country
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.responses.{ApiResponse, ApiResponses}
 import org.springframework.beans.factory.annotation.Autowired
@@ -20,7 +19,7 @@ class CountryController(@Autowired countryService: CountryService){
     new ApiResponse(responseCode = "200", description = "Successfully retrieved"),
     new ApiResponse(responseCode = "404", description = "The countries were not found")))
   @GetMapping
-  def getAllCountries: ResponseEntity[util.ArrayList[Country]] =
+  def getAllCountries: ResponseEntity[Array[String]] =
     ResponseEntity.ok(countryService.getAllCountries)
 
 }
