@@ -3,16 +3,37 @@ package com.rohitpothuri.rbac.common.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-public class SecurityConfig{
+@EnableWebSecurity
+public class SecurityConfig {
+
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests(authorizeRequests -> authorizeRequests.anyRequest()
-                .permitAll()).csrf(AbstractHttpConfigurer::disable);;
+    public SecurityFilterChain configure(HttpSecurity http) throws Exception {
+        http
+                .oauth2Client()
+                .and()
+                .oauth2Login()
+                .tokenEndpoint()
+                .and()
+                .userInfoEndpoint();
+
+        http
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
+
+        http
+                .authorizeHttpRequests()
+                .requestMatchers("/swagger-ui/**","/v3/api-docs/**", "/oauth2/**", "/login/**").permitAll()
+                .anyRequest()
+                .fullyAuthenticated()
+                .and()
+                .logout()
+                .logoutSuccessUrl("http://localhost:8080/realms/RBAC/protocol/openid-connect/logout?redirect_uri=http://localhost:8091/home");
+
         return http.build();
     }
 }
-

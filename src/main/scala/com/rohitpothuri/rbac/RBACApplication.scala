@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.{GetMapping, RequestMapping, Rest
 @EnableJpaRepositories
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 @EnableCaching
-@RequestMapping(path = Array("/"))
+@RequestMapping(path = Array("/home"))
 class RBACApplication {
   @GetMapping() def home = "Welcome to Analytics Engine RBAC Services"
 
