@@ -32,6 +32,8 @@ class RBACApplication {
     executor.initialize()
     executor
   }
+
+
 }
 
 object RBACApplication {
@@ -39,5 +41,6 @@ object RBACApplication {
     val application = new SpringApplication(classOf[RBACApplication])
     application.setBannerMode(Banner.Mode.OFF)
     application.run()
+
   }
 }

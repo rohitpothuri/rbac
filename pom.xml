@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.0.0</version>
+        <version>2.4.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.rohitpothuri</groupId>
@@ -17,11 +17,11 @@
     <properties>
 
         <!-- Spring Dependencies -->
-        <spring.version>3.1.0</spring.version>
+        <spring.version>2.4.0</spring.version>
         <spring.security.version>6.0.1</spring.security.version>
 
         <!-- Swagger Dependencies -->
-        <springdoc.version>2.1.0</springdoc.version>
+        <springfox.version>2.9.2</springfox.version>
 
         <!-- MVN Dependencies -->
         <maven-compiler.source>3.10.1</maven-compiler.source>
@@ -30,9 +30,9 @@
         <maven-resources-plugin>3.3.0</maven-resources-plugin>
 
         <!-- Scala Dependencies -->
-        <scala.version>3.3.1</scala.version>
-        <scala.binary.version>3.3</scala.binary.version>
-        <scala-maven-plugin.version>4.8.0</scala-maven-plugin.version>
+        <scala.version>2.12.15</scala.version>
+        <scala.binary.version>2.12</scala.binary.version>
+        <scala-maven-plugin.version>3.3.2</scala-maven-plugin.version>
 
         <!-- MISC Dependencies -->
         <jgitflow.version>1.0-m5.1</jgitflow.version>
@@ -46,6 +46,11 @@
 
     <!-- Spring Dependencies -->
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -74,32 +79,21 @@
             <version>${spring.version}</version>
             <optional>true</optional>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-aop Added for logging-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
 
 
         <!-- Swagger Dependencies -->
         <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>${springdoc.version}</version>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${springfox.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${springfox.version}</version>
         </dependency>
 
         <!-- Scala Dependencies -->
-        <dependency>
-            <groupId>org.scala-lang</groupId>
-            <artifactId>scala3-library_3</artifactId>
-            <version>${scala.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.scala-lang</groupId>
-            <artifactId>scala3-compiler_3</artifactId>
-            <version>${scala.version}</version>
-        </dependency>
 
         <!-- Micrometer Prometheus registry -->
         <dependency>
@@ -138,16 +132,19 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-
-        <dependency>
             <groupId>io.temporal</groupId>
             <artifactId>temporal-spring-boot-starter-alpha</artifactId>
             <version>1.19.1</version> <!-- Replace with the latest version -->
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.temporal/temporal-sdk -->
+        <dependency>
+            <groupId>io.temporal</groupId>
+            <artifactId>temporal-sdk</artifactId>
+            <version>1.22.3</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>
