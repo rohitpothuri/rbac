@@ -40,7 +40,9 @@ object RBACApplication {
   def main(args: Array[String]): Unit = {
     val application = new SpringApplication(classOf[RBACApplication])
     application.setBannerMode(Banner.Mode.OFF)
-    application.run()
+    val applicationContext = application.run()
+    applicationContext.start()
+
 
   }
 }

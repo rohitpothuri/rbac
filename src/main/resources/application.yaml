@@ -9,7 +9,7 @@ spring:
     connection:
       target: 127.0.0.1:7233
     workers:
-      - task-queue: GreetingTaskQueue
+        task-queue: GreetingTaskQueue
         capacity:
           max-concurrent-workflow-task-pollers: 6
           max-concurrent-activity-task-pollers: 6
