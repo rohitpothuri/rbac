@@ -2,6 +2,7 @@ package com.rohitpothuri.rbac.workflows
 
 import io.temporal.activity.Activity
 import io.temporal.spring.boot.ActivityImpl
+import org.springframework.stereotype.Component
 
 /** The InitialInterval property defines how long after the initial failure the
   * first retry will occur. By default, that's one second. The
@@ -22,7 +23,12 @@ import io.temporal.spring.boot.ActivityImpl
   * or more properties, such as InitialInterval or BackoffCoefficient, described
   * on the previous page Associate your policy with the ActivityOptions used
   * with your Activity
+ *
+ * @Component is very important to make sure that the activity is registered with the spring context. Its not auto discovered without this annotation
   */
+
+
+@Component
 @ActivityImpl(taskQueues = Array("GreetingTaskQueue"))
 class GreetingActivityImpl extends GreetingActivity {
   override def greet(name: String): String = try

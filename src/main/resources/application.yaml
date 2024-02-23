@@ -6,28 +6,14 @@ spring:
     basic:
       enabled: false
   temporal:
-    connection:
-      target: 127.0.0.1:7233
-    workers:
-        task-queue: GreetingTaskQueue
-        capacity:
-          max-concurrent-workflow-task-pollers: 6
-          max-concurrent-activity-task-pollers: 6
-        rate-limits:
-          max-worker-activities-per-second: 0
-          max-task-queue-activities-per-second: 0
+    namespace: default
     workflow-cache:
       max-instances: 10
       max-threads: 10
+    connection:
+      target: 127.0.0.1:7233
     workersAutoDiscovery:
       packages: com.rohitpothuri.rbac.workflows
-
-  ## default connection pool
-  neo4j:
-    uri: bolt://localhost:7687
-    authentication:
-      username: neo4j
-      password: lucky9314
     ## default connection pool
   datasource:
     url: jdbc:h2:mem:testdb
@@ -42,8 +28,6 @@ spring:
     hikari:
       connectionTimeout: 20000
       maximumPoolSize: 5
-  main:
-    lazy-initialization: true
 #
 #  # create and drop table, good for testing, production set to none or comment it
 #  spring.jpa.hibernate.ddl-auto=create-drop

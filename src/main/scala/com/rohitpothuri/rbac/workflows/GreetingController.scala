@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation._
   * be restarted whenever there is a change in the workflow code
   */
 @Controller
-class GreetingScalaController(@Autowired val client: WorkflowClient) {
+class GreetingController(@Autowired val client: WorkflowClient) {
   @PutMapping(value = Array("/"))
   def helloSample: ResponseEntity[String] = {
     val workflow = client.newWorkflowStub(
@@ -28,6 +28,7 @@ class GreetingScalaController(@Autowired val client: WorkflowClient) {
     System.out.println(
       workflowDetails.getWorkflowId + "|" + workflowDetails.getRunId + " " + greeting
     )
+
     new ResponseEntity[String](
       workflowDetails.getWorkflowId + "|" + workflowDetails.getRunId + " " + greeting,
       HttpStatus.OK
@@ -62,21 +63,4 @@ class GreetingScalaController(@Autowired val client: WorkflowClient) {
           }
 
       }*/
-  @PutMapping(value =
-    Array("/startWorker")
-  ) def startWorker: ResponseEntity[String] = {
-    // f you are using Temporal Cloud, you would instead call the newServiceStubs(WorkflowServiceStubsOptions options)
-    // method using options that include the hostname and port number used to reach its frontend service.
-    val service = WorkflowServiceStubs.newLocalServiceStubs
-    val client = WorkflowClient.newInstance(service)
-    val factory = WorkerFactory.newInstance(client)
-    // Specify the name of the Task Queue that this Worker should poll
-    val worker = factory.newWorker("GreetingTaskQueue")
-    // Specify which Workflow implementations this Worker will support
-    worker.registerWorkflowImplementationTypes(classOf[GreetingWorkflowImpl])
-    worker.registerActivitiesImplementations(new GreetingActivityImpl)
-    // Begin running the Worker
-    factory.start()
-    new ResponseEntity[String]("Worker started", HttpStatus.OK)
-  }
 }
