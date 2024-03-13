@@ -10,10 +10,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 @MappedSuperclass
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Setter
-@Getter
 public abstract class JPATimestampEntity {
     @CreationTimestamp
     @Column(nullable = false, updatable = false)

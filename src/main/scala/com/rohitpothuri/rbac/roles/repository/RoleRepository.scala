@@ -1,4 +1,4 @@
-package com.rohitpothuri.rbac.department.repository
+package com.rohitpothuri.rbac.roles.repository
 
 import com.rohitpothuri.rbac.department.model.Department
 import io.swagger.v3.oas.annotations.tags.Tag
@@ -8,9 +8,9 @@ import org.springframework.data.repository.PagingAndSortingRepository
 import org.springframework.data.repository.query.Param
 import org.springframework.data.rest.core.annotation.{RepositoryRestResource, RestResource}
 
-@RepositoryRestResource(path = "department")
-@Tag(name = "Department", description = "Department Entity Controller")
-trait DepartmentRepository extends JpaRepository[Department, java.lang.String] with PagingAndSortingRepository[Department, java.lang.String] {
+@RepositoryRestResource(path = "roles")
+@Tag(name = "Roles", description = "Roles Entity Controller")
+trait RoleRepository extends JpaRepository[Role, java.lang.String] with PagingAndSortingRepository[Department, java.lang.String] {
   @RestResource(path = "name")
   def findByNameContainingIgnoreCase(@Param("name") name: String, pageable: Pageable): Page[Department]
 }

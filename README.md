@@ -111,3 +111,5 @@ eg:
 def testMethod = {
     println("Just Testing")
 }
+
+https://www.baeldung.com/role-and-privilege-for-spring-security-registration
